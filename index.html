@@ -1,319 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
     <title>Riding Low With My Girl</title>
     <meta name="description" content="An Interactive Music Video" />
     <script src="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.js"></script>
-    <link
-      href="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link rel="stylesheet" type="text/css" href="main.css" />
-  </head>
-  <body>
-    <video muted loop muted playsinline id="ridingLowVideo" preload="metadata">
-      <source src="ridinglow.mp4#t=0.1" type="video/mp4" />
-      Your browser does not support video.
+    <link href="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+</head>
+
+<body>
+    <video muted loop muted playsinline id="riding-low-video" preload="metadata">
+        <source src="assets/ridinglow.mp4#t=0.1" type="video/mp4" />
+        Your browser does not support video.
     </video>
 
     <canvas id="canvas"></canvas>
 
     <div class="info">
-      <span>
-        <h1>RidingLowWithMyGirl.mp3</h1>
-        <p>Interactive Demo</p>
-        <h1>Sean Fe'ao</h1>
-        <h1>BFF Records</h1>
-      </span>
-
-      <span class="span-right">
-        <p>Writing: Sean Fe'ao</p>
-        <p>Production: Sean Fe'ao</p>
-        <p>Mix & Master: Harri Knight</p>
-        <p>Video & Processing: Harri Knight</p>
-        <p>Development: Harri Knight</p>
-      </span>
+        <span>
+            <h1>RidingLowWithMyGirl.mp3</h1>
+            <p>Interactive Demo</p>
+            <h1>Sean Fe'ao</h1>
+            <h1>BFF Records</h1>
+        </span>
+        <span class="span-right">
+            <p>Writing: Sean Fe'ao</p>
+            <p>Production: Sean Fe'ao</p>
+            <p>Mix & Master: Harri Knight</p>
+            <p>Video & Processing: Harri Knight</p>
+            <p>Development: Harri Knight</p>
+        </span>
     </div>
 
     <div class="controls">
-      <button class="mdc-fab start" aria-label="not_started">
-        <div class="mdc-fab__ripple"></div>
-        <span class="mdc-fab__icon material-icons">not_started</span>
-      </button>
+        <button id="play-button" class="mdc-fab" data-playing="false" role="switch">
+            <div class="mdc-fab__ripple"></div>
+            <span class="mdc-fab__icon material-icons" id="play-button-icon">not_started</span>
+        </button>
 
-      <button
-        class="mdc-fab play"
-        aria-label="play_circle_outline"
-        style="display: none"
-      >
-        <div class="mdc-fab__ripple"></div>
-        <span class="mdc-fab__icon material-icons">play_circle_outline</span>
-      </button>
+        <div class="mdc-slider">
+            <input class="mdc-slider__input" type="range" min="0" max="1" value="0" step="0.01" name="delay"
+                aria-label="delay control" />
+            <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                    <div class="mdc-slider__track--active_fill"></div>
+                </div>
+            </div>
+            <div class="mdc-slider__thumb">
+                <div class="mdc-slider__thumb-knob"></div>
+            </div>
+        </div>
 
-      <button
-        class="mdc-fab pause"
-        aria-label="pause_circle"
-        style="display: none"
-      >
-        <div class="mdc-fab__ripple"></div>
-        <span class="mdc-fab__icon material-icons">pause_circle</span>
-      </button>
-
-      <div class="mdc-slider delay">
-        <input
-          id="delay"
-          class="mdc-slider__input"
-          type="range"
-          min="0"
-          max="1"
-          value="0"
-          step="0.01"
-          name="delay"
-          aria-label="delay control"
-        />
-        <div class="mdc-slider__track">
-          <div class="mdc-slider__track--inactive"></div>
-          <div class="mdc-slider__track--active">
-            <div class="mdc-slider__track--active_fill"></div>
-          </div>
+        <div class="mdc-slider">
+            <input class="mdc-slider__input" type="range" min="0.25" max="1.25" value="1" step="0.01" name="repitch"
+                aria-label="repitch control" />
+            <div class="mdc-slider__track">
+                <div class="mdc-slider__track--inactive"></div>
+                <div class="mdc-slider__track--active">
+                    <div class="mdc-slider__track--active_fill"></div>
+                </div>
+            </div>
+            <div class="mdc-slider__thumb">
+                <div class="mdc-slider__thumb-knob"></div>
+            </div>
         </div>
-        <div class="mdc-slider__thumb">
-          <div class="mdc-slider__thumb-knob"></div>
-        </div>
-      </div>
-
-      <div class="mdc-slider repitch">
-        <input
-          id="repitch"
-          class="mdc-slider__input"
-          type="range"
-          min="0.25"
-          max="1.25"
-          value="1"
-          step="0.01"
-          name="repitch"
-          aria-label="repitch control"
-        />
-        <div class="mdc-slider__track">
-          <div class="mdc-slider__track--inactive"></div>
-          <div class="mdc-slider__track--active">
-            <div class="mdc-slider__track--active_fill"></div>
-          </div>
-        </div>
-        <div class="mdc-slider__thumb">
-          <div class="mdc-slider__thumb-knob"></div>
-        </div>
-      </div>
     </div>
+    <script type="module" src="./js/main.js"></script>
+</body>
 
-    <script>
-      // // MDC
-      const MDCSlider = mdc.slider.MDCSlider;
-
-      const repitch = new MDCSlider(document.querySelector(".repitch"));
-      const delay = new MDCSlider(document.querySelector(".delay"));
-
-      mdc.ripple.MDCRipple.attachTo(document.querySelector(".start"));
-      mdc.ripple.MDCRipple.attachTo(document.querySelector(".play"));
-      mdc.ripple.MDCRipple.attachTo(document.querySelector(".pause"));
-
-      // // Useful UI elements
-      const startBtn = document.querySelector(".start");
-      const stopBtn = document.querySelector(".pause");
-      const resumeBtn = document.querySelector(".play");
-      const canvasElt = document.querySelector("#canvas");
-      const video = document.getElementById("ridingLowVideo");
-
-      // Set up canvas Context
-      const canvasCtx = canvasElt.getContext("2d");
-      canvasElt.width = window.innerWidth;
-      canvasElt.height = window.innerHeight;
-      window.onresize = () => {
-        canvasElt.width = window.innerWidth;
-        canvasElt.height = window.innerHeight;
-      };
-      canvasCtx.clearRect(0, 0, canvasElt.width, canvasElt.height);
-
-      // No Autoplay, Autoplay bad >.<
-      let audioContext = null;
-
-      // Loading function for fetching the audio file and decode the data, returns an AudioBuffer
-      async function loadFile(filepath) {
-        const response = await fetch(filepath);
-        const arrayBuffer = await response.arrayBuffer();
-        const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
-        const track = audioBuffer;
-        return track;
-      }
-
-      // Create a buffer, plop in data, connect and play, Returns an AudioBufferSourceNode
-      function playTrack(audioBuffer) {
-        const trackSource = new AudioBufferSourceNode(audioContext, {
-          buffer: audioBuffer,
-        });
-
-        // Set up Nodes
-        var delayNode = audioContext.createDelay(5);
-        var delayWetMixNode = audioContext.createGain();
-        var delayDryMixNode = audioContext.createGain();
-        var masterNode = audioContext.createGain();
-        var feedbackNode = audioContext.createGain();
-
-        // create LFO and set values
-        lfoNode = audioContext.createOscillator();
-        lfoGainNode = audioContext.createGain();
-
-        lfoNode.frequency.value = 0.5; // Freq. in Hz
-        lfoGainNode.gain.value = 0.0005;
-        lfoNode.start(); // start the oscillator
-
-        var filterNode = audioContext.createBiquadFilter();
-        filterNode.type = "lowpass";
-        filterNode.frequency.value = 2000; // Freq. in Hz
-
-        const analyserNode = new AnalyserNode(audioContext);
-        analyserNode.fftSize = 512;
-        const bufferLength = analyserNode.frequencyBinCount;
-        const dataArray = new Uint8Array(bufferLength);
-
-        feedbackNode.gain.value = 0.3;
-        delayNode.delayTime.value = 1;
-        delayDryMixNode.gain.value = 1;
-        delayWetMixNode.gain.value = 0;
-
-        function convertRange(value, r1, r2) {
-          return ((value - r1[0]) * (r2[1] - r2[0])) / (r1[1] - r1[0]) + r2[0];
-        }
-
-        // delay.listen('MDCSlider:change', () => console.log(`Value changed to ${delay.value}`));
-
-        var delayControl = document.querySelector("#delay");
-        delay.root.addEventListener(
-          "MDCSlider:change",
-          (e) => {
-            var value = e.detail.value;
-            delayNode.delayTime.value = convertRange(value, [0, 1], [0, 2]);
-            delayWetMixNode.gain.value = convertRange(value, [0, 1], [0, 0.7]);
-            delayDryMixNode.gain.value = convertRange(value, [0, 1], [1, 0.7]);
-          },
-          false
-        );
-
-        // Setup Repitch
-        repitch.root.addEventListener(
-          "MDCSlider:change",
-          (e) => {
-            var value = e.detail.value;
-            trackSource.playbackRate.value = value;
-            video.playbackRate = value;
-          },
-          false
-        );
-
-        trackSource.connect(delayDryMixNode);
-        delayDryMixNode.connect(masterNode);
-
-        trackSource.connect(filterNode);
-        filterNode.connect(delayNode);
-        delayNode.connect(delayWetMixNode);
-        delayNode.connect(feedbackNode);
-        feedbackNode.connect(filterNode);
-        delayWetMixNode.connect(masterNode);
-
-        lfoNode.connect(lfoGainNode);
-        lfoGainNode.connect(delayNode.delayTime); // modulates a parameter
-
-        masterNode.connect(analyserNode);
-        masterNode.connect(audioContext.destination);
-
-        trackSource.start();
-
-        // Draw the Waveform
-        function draw() {
-          drawVisual = requestAnimationFrame(draw);
-
-          canvasCtx.clearRect(0, 0, canvasElt.width, canvasElt.height);
-
-          analyserNode.getByteTimeDomainData(dataArray);
-
-          canvasCtx.lineWidth = 2;
-          canvasCtx.strokeStyle = "rgb(200, 200, 200)";
-
-          canvasCtx.beginPath();
-
-          const sliceWidth = (canvasElt.width * 1.0) / bufferLength;
-          let x = 0;
-
-          for (let i = 0; i < bufferLength; i++) {
-            let v = dataArray[i] / 128.0;
-            let y = (v * canvasElt.height) / 2;
-
-            if (i === 0) {
-              canvasCtx.moveTo(x, y);
-            } else {
-              canvasCtx.lineTo(x, y);
-            }
-
-            x += sliceWidth;
-          }
-
-          canvasCtx.lineTo(canvasElt.width, canvasElt.height / 2);
-          canvasCtx.stroke();
-        }
-        draw();
-
-        return trackSource;
-      }
-
-      // Load Sample
-      startBtn.addEventListener("click", () => {
-        // A user interaction happened we can create the audioContext
-        audioContext = new AudioContext();
-
-        // Load the audio and set up the play and pause
-        loadFile("./ridinglow.mp3").then((track) => {
-          startBtn.style.display = "none";
-          resumeBtn.style.display = "none";
-          stopBtn.style.display = "flex";
-
-          // check if context is in suspended state (autoplay policy)
-          if (audioContext.state == "suspended") {
-            audioContext.resume();
-            video.play();
-          } else {
-            playTrack(track);
-            video.play();
-          }
-
-          // Set up the event handler to stop playing the audio
-          stopBtn.addEventListener("click", () => {
-            audioContext.suspend().then(() => {
-              video.pause();
-              startBtn.style.display = "none";
-              resumeBtn.style.display = "flex";
-              stopBtn.style.display = "none";
-            });
-          });
-        });
-      });
-
-      // Set up the event handler to stop playing the audio
-      resumeBtn.addEventListener("click", () => {
-        audioContext.resume();
-        video.play();
-        startBtn.style.display = "none";
-        resumeBtn.style.display = "none";
-        stopBtn.style.display = "flex";
-      });
-
-
-
-      document.querySelector('html').style.filter = 'invert(100%) contrast(1.5)'
-    </script>
-  </body>
 </html>

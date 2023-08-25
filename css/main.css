@@ -1,9 +1,9 @@
 :root {
-  --mdc-theme-primary: rgb(225, 225, 225) ;
-  --mdc-theme-on-primary: rgb(40, 40, 40) ;
+  --mdc-theme-primary: rgb(225, 225, 225);
+  --mdc-theme-on-primary: rgb(40, 40, 40);
   --mdc-theme-primary-container: ;
   --mdc-theme-on-primary-container: ;
-  --mdc-theme-secondary: rgb(225, 225, 225) ;
+  --mdc-theme-secondary: rgb(225, 225, 225);
   --mdc-theme-on-secondary: rgb(40, 40, 40);
   --mdc-theme-secondary-container: ;
   --mdc-theme-on-secondary-container: ;
@@ -31,36 +31,40 @@
   --mdc-theme-scrim: ;
 }
 
-h1,h2,p {
+h1,
+h2,
+p {
   color: rgb(225, 225, 225);
   font-size: 16px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
   font-weight: normal;
 }
 
-html, body {
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-#ridingLowVideo {
-    position: fixed;
-    z-index: -1000;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
+#riding-low-video {
+  position: fixed;
+  z-index: -1000;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 canvas {
-    z-index: -1000;
-    position: fixed;
-    top: 0;
-    left: 0;
+  z-index: -1000;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 .info {
@@ -87,10 +91,10 @@ canvas {
   gap: 4px;
 }
 
-.mdc-slider{
+.mdc-slider {
   flex-grow: 1;
 }
 
-.mdc-fab{
+.mdc-fab {
   margin-right: 20px;
 }
