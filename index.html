@@ -1,75 +1,132 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Riding Low With My Girl</title>
+        <meta name="description" content="An Interactive Music Video" />
+        <script src="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.js"></script>
+        <link
+            href="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+    </head>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Riding Low With My Girl</title>
-    <meta name="description" content="An Interactive Music Video" />
-    <script src="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.js"></script>
-    <link href="https://unpkg.com/material-components-web@9.0.0/dist/material-components-web.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-    <link rel="stylesheet" type="text/css" href="css/main.css" />
-</head>
+    <body>
+        <video
+            muted
+            loop
+            muted
+            playsinline
+            id="riding-low-video"
+            preload="metadata"
+        >
+            <source src="assets/ridinglow.mp4#t=0.1" type="video/mp4" />
+            Your browser does not support video.
+        </video>
 
-<body>
-    <video muted loop muted playsinline id="riding-low-video" preload="metadata">
-        <source src="assets/ridinglow.mp4#t=0.1" type="video/mp4" />
-        Your browser does not support video.
-    </video>
+        <canvas id="canvas"></canvas>
 
-    <canvas id="canvas"></canvas>
-
-    <div class="info">
-        <span>
-            <h1>RidingLowWithMyGirl.mp3</h1>
-            <p>Interactive Demo</p>
-            <h1>Sean Fe'ao</h1>
-            <h1>BFF Records</h1>
-        </span>
-        <span class="span-right">
-            <p>Writing: Sean Fe'ao</p>
-            <p>Production: Sean Fe'ao</p>
-            <p>Mix & Master: Harri Knight</p>
-            <p>Video & Processing: Harri Knight</p>
-            <p>Development: Harri Knight</p>
-        </span>
-    </div>
-
-    <div class="controls">
-        <button id="play-button" class="mdc-fab" data-playing="false" role="switch">
-            <div class="mdc-fab__ripple"></div>
-            <span class="mdc-fab__icon material-icons" id="play-button-icon">not_started</span>
-        </button>
-
-        <div class="mdc-slider">
-            <input class="mdc-slider__input" type="range" min="0" max="1" value="0" step="0.01" name="delay"
-                aria-label="delay control" />
-            <div class="mdc-slider__track">
-                <div class="mdc-slider__track--inactive"></div>
-                <div class="mdc-slider__track--active">
-                    <div class="mdc-slider__track--active_fill"></div>
-                </div>
-            </div>
-            <div class="mdc-slider__thumb">
-                <div class="mdc-slider__thumb-knob"></div>
-            </div>
+        <div class="info">
+            <span>
+                <h1>RidingLowWithMyGirl.mp3</h1>
+                <p>Interactive Demo</p>
+                <h1>
+                    <a href="https://soundcloud.com/seankapiseli"
+                        >Sean Kapiseli</a
+                    >
+                </h1>
+                <h1>BFF Records</h1>
+            </span>
+            <span class="span-right">
+                <p>
+                    Writing:
+                    <a href="https://soundcloud.com/seankapiseli"
+                        >Sean Kapiseli</a
+                    >
+                </p>
+                <p>
+                    Production:
+                    <a href="https://soundcloud.com/seankapiseli"
+                        >Sean Kapiseli</a
+                    >
+                </p>
+                <p>
+                    Mix & Master:
+                    <a href="https://harriknight.com">Harri Knight</a>
+                </p>
+                <p>
+                    Video & Processing:
+                    <a href="https://harriknight.com">Harri Knight</a>
+                </p>
+                <p>
+                    Development:
+                    <a href="https://harriknight.com">Harri Knight</a>
+                </p>
+            </span>
         </div>
 
-        <div class="mdc-slider">
-            <input class="mdc-slider__input" type="range" min="0.25" max="1.25" value="1" step="0.01" name="repitch"
-                aria-label="repitch control" />
-            <div class="mdc-slider__track">
-                <div class="mdc-slider__track--inactive"></div>
-                <div class="mdc-slider__track--active">
-                    <div class="mdc-slider__track--active_fill"></div>
+        <div class="controls">
+            <button
+                id="play-button"
+                class="mdc-fab"
+                data-playing="false"
+                role="switch"
+            >
+                <div class="mdc-fab__ripple"></div>
+                <span class="mdc-fab__icon material-icons" id="play-button-icon"
+                    >not_started</span
+                >
+            </button>
+
+            <div class="mdc-slider">
+                <input
+                    class="mdc-slider__input"
+                    type="range"
+                    min="0"
+                    max="1"
+                    value="0"
+                    step="0.01"
+                    name="delay"
+                    aria-label="delay control"
+                />
+                <div class="mdc-slider__track">
+                    <div class="mdc-slider__track--inactive"></div>
+                    <div class="mdc-slider__track--active">
+                        <div class="mdc-slider__track--active_fill"></div>
+                    </div>
+                </div>
+                <div class="mdc-slider__thumb">
+                    <div class="mdc-slider__thumb-knob"></div>
                 </div>
             </div>
-            <div class="mdc-slider__thumb">
-                <div class="mdc-slider__thumb-knob"></div>
+
+            <div class="mdc-slider">
+                <input
+                    class="mdc-slider__input"
+                    type="range"
+                    min="0.25"
+                    max="1.25"
+                    value="1"
+                    step="0.01"
+                    name="repitch"
+                    aria-label="repitch control"
+                />
+                <div class="mdc-slider__track">
+                    <div class="mdc-slider__track--inactive"></div>
+                    <div class="mdc-slider__track--active">
+                        <div class="mdc-slider__track--active_fill"></div>
+                    </div>
+                </div>
+                <div class="mdc-slider__thumb">
+                    <div class="mdc-slider__thumb-knob"></div>
+                </div>
             </div>
         </div>
-    </div>
-    <script type="module" src="./js/main.js"></script>
-</body>
-
+        <script type="module" src="./js/main.js"></script>
+    </body>
 </html>
